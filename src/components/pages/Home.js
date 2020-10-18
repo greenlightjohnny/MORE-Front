@@ -1,10 +1,11 @@
 import React from "react";
-
+import Floating from "../../images/float2.jpg";
+import Styles from "./home.module.scss";
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <section className={Styles.hero}>
+      <div className={Styles.heroCon}></div>
+    </section>
   );
 };
 

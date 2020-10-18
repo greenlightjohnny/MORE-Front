@@ -1,13 +1,17 @@
 import React from "react";
 import Styles from "./header.module.scss";
+import AuthOptions from "../auth/AuthOptions";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className={Styles.main}>
-      <div className={Styles.container}>
-        <Link to="/">Home</Link>
-      </div>
-    </div>
+    <header className={Styles.main}>
+      <nav className={Styles.container}>
+        <Link to="/">
+          <h1>Logo</h1>
+        </Link>
+        <AuthOptions />
+      </nav>
+    </header>
   );
 };
 

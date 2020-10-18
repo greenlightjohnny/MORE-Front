@@ -1,0 +1,18 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  .heroCon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/float2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+  }
+}
