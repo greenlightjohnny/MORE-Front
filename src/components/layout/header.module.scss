@@ -1,0 +1,28 @@
+.main {
+  width: 100%;
+  background-color: rgb(63, 55, 55);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  ul {
+    margin-left: 1rem;
+    list-style: none;
+  }
+  a {
+    color: #2199df;
+    text-decoration: none;
+  }
+
+  button,
+  input[type="submit"] {
+    border: none;
+    background: none;
+    color: unset;
+    cursor: pointer;
+  }
+}
