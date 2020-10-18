@@ -15,11 +15,32 @@ const schema = Joi.object({
 });
 
 export default function Register() {
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, setError, watch, errors } = useForm({
     resolver: joiResolver(schema),
   });
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+
+  const myAPI = "http://localhost:5000/api/v1/users/register";
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      await fetch(myAPI, {
+        method: "POST",
+
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      //console.log('$$$$$Error', error)
+      setError(
+        "submit",
+        "submitError",
+        `Oops! There seems to be an issue! ${error.message}`
+      );
+    }
   };
 
   return (
