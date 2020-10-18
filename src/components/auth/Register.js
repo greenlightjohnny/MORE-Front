@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-
+import UserContext from "../../context/UserContext";
 import Joi from "joi";
 
 const schema = Joi.object({
@@ -18,13 +18,14 @@ export default function Register() {
   const { register, handleSubmit, setError, watch, errors } = useForm({
     resolver: joiResolver(schema),
   });
+  const { setUserData } = useContext(UserContext);
 
-  const myAPI = "http://localhost:5000/api/v1/users/register";
+  const APIReg = "http://localhost:5000/api/v1/users/register";
+  const APILogin = "http://localhost:5000/api/v1/users/login";
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
-      await fetch(myAPI, {
+      const regRes = await fetch(APIReg, {
         method: "POST",
 
         body: JSON.stringify(data),
@@ -33,6 +34,24 @@ export default function Register() {
           "Content-Type": "application/json",
         },
       });
+      const userData = await regRes.json();
+      const loginData = {
+        email: data.email,
+        password: data.password,
+      };
+      if (userData) {
+        const loginRes = await fetch(APILogin, {
+          method: "POST",
+
+          body: JSON.stringify(loginData),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+        const loginJ = await loginRes.json();
+        console.log(loginJ);
+      }
     } catch (error) {
       //console.log('$$$$$Error', error)
       setError(
