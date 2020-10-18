@@ -1,0 +1,89 @@
+.reg {
+  --color-secondary: #bf1650;
+  --color-light-pink: #ec5990;
+  --color-primary: #0e101c;
+  --color-blue: #1e2a4a;
+  --color-button-blue: #191d3a;
+  --color-light-blue: #516391;
+  --color-link: #ff7aa8;
+  --color-medium-blue: #4f6294;
+  --color-black: #2d2d2d;
+  --color-purple: #0f111b;
+  --color-grey: #333;
+  --color-light-grey: #ccc;
+  background: #191d3a;
+  min-height: 100vh;
+
+  .regcon {
+    padding-top: 10rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+  }
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 10px;
+    border: 1px solid #fff;
+  }
+
+  button {
+    background: var(--color-light-pink);
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    border: 1px solid var(--color-light-pink);
+    width: 100%;
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 0;
+
+    line-height: 1;
+    display: inline-block;
+    padding: 16px 10px;
+  }
+
+  button:hover {
+    background: var(--color-secondary);
+  }
+
+  input[type="submit"] {
+    background: #ec5990;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    //margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+  }
+  input[type="submit"]:hover {
+    background: #bf1650;
+  }
+
+  p {
+    color: #2199df;
+  }
+
+  .errorcon {
+    height: 37px;
+  }
+}
