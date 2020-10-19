@@ -32,7 +32,9 @@ export default function Login() {
   const onSubmit = async (data) => {
     clearNode();
     try {
-      const loginRes = await axios.post(APILogin, data);
+      const loginRes = await axios.post(APILogin, data, {
+        withCredentials: true,
+      });
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
