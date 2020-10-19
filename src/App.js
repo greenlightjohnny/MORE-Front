@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useParams } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import Home from "./components/pages/Home";
@@ -7,6 +7,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Header from "./components/layout/Header";
 import UserContext from "./context/UserContext";
+import Confirm from "./components/auth/Confirm";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -70,6 +71,7 @@ function App() {
             <Route exact path="/" component={Home}></Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/register" component={Register}></Route>
+            <Route path="/confirm/:etoken" component={Confirm}></Route>
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>

@@ -46,7 +46,7 @@ export default function Register() {
           "Thanks for registering! Please check your email to complete registration",
       });
     } catch (err) {
-      console.log(err.response.data.msg);
+      console.log(err);
       err.response.data.msg && setNodeError(err.response.data.msg);
     }
   };
