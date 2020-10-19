@@ -14,7 +14,7 @@ const schema = Joi.object({
   password: Joi.string().min(6).max(256).required(),
 });
 
-export default function Login() {
+export default function Login(props) {
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: joiResolver(schema),
   });
@@ -45,12 +45,14 @@ export default function Login() {
       err.response.data.msg && setNodeError(err.response.data.msg);
     }
   };
+  const welcome = props.location.welcome;
 
   return (
     <div className={Styles.reg}>
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Login</h1>
+          {welcome && <p>{welcome}</p>}
           <input
             name="email"
             placeholder="Email"

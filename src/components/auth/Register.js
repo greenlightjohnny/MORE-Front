@@ -23,22 +23,28 @@ export default function Register() {
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
+
   const APIReg = "http://localhost:5000/api/v1/users/register";
   const APILogin = "http://localhost:5000/api/v1/users/login";
 
   const onSubmit = async (data) => {
     try {
       await axios.post(APIReg, data);
-      const loginRes = await axios.post(APILogin, {
-        email: data.email,
-        password: data.password,
+      //   const loginRes = await axios.post(APILogin, {
+      //     email: data.email,
+      //     password: data.password,
+      //   });
+      //   setUserData({
+      //     token: loginRes.data.token,
+      //     user: loginRes.data.user,
+      //   });
+      //   localStorage.setItem("a-token", loginRes.data.token);
+
+      history.push({
+        pathname: "/login",
+        welcome:
+          "Thanks for registering! Please check your email to complete registration",
       });
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
-      localStorage.setItem("a-token", loginRes.data.token);
-      history.push("/");
     } catch (err) {
       console.log(err.response.data.msg);
       err.response.data.msg && setNodeError(err.response.data.msg);
