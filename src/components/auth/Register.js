@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { joiResolver } from "@hookform/resolvers/joi";
 import UserContext from "../../context/UserContext";
 import Joi from "joi";
+import axios from "axios";
 
 const schema = Joi.object({
   name: Joi.string(),
@@ -19,48 +21,73 @@ export default function Register() {
     resolver: joiResolver(schema),
   });
   const { setUserData } = useContext(UserContext);
-
+  const history = useHistory();
+  const [nodeError, setNodeError] = useState("");
   const APIReg = "http://localhost:5000/api/v1/users/register";
   const APILogin = "http://localhost:5000/api/v1/users/login";
 
   const onSubmit = async (data) => {
     try {
-      const regRes = await fetch(APIReg, {
-        method: "POST",
-
-        body: JSON.stringify(data),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const userData = await regRes.json();
-      const loginData = {
+      await axios.post(APIReg, data);
+      const loginRes = await axios.post(APILogin, {
         email: data.email,
         password: data.password,
-      };
-      if (userData) {
-        const loginRes = await fetch(APILogin, {
-          method: "POST",
-
-          body: JSON.stringify(loginData),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
-        const loginJ = await loginRes.json();
-        console.log(loginJ);
-      }
-    } catch (error) {
-      //console.log('$$$$$Error', error)
-      setError(
-        "submit",
-        "submitError",
-        `Oops! There seems to be an issue! ${error.message}`
-      );
+      });
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+      localStorage.setItem("a-token", loginRes.data.token);
+      history.push("/");
+    } catch (err) {
+      console.log(err.response.data.msg);
+      err.response.data.msg && setNodeError(err.response.data.msg);
     }
   };
+
+  //   const onSubmit = async (data) => {
+  //     try {
+  //       const regRes = await fetch(APIReg, {
+  //         method: "POST",
+
+  //         body: JSON.stringify(data),
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+  //       const userData = await regRes.json();
+  //       const loginData = {
+  //         email: data.email,
+  //         password: data.password,
+  //       };
+  //       if (userData) {
+  //         const loginRes = await fetch(APILogin, {
+  //           method: "POST",
+
+  //           body: JSON.stringify(loginData),
+  //           headers: {
+  //             Accept: "application/json",
+  //             "Content-Type": "application/json",
+  //           },
+  //         });
+  //         const loginJ = await loginRes.json();
+  //         setUserData({
+  //           token: loginJ.token,
+  //           user: loginJ.user,
+  //         });
+  //         localStorage.setItem("a-token", loginJ.token);
+  //         history.push("/");
+  //       }
+  //     } catch (error) {
+  //       //console.log('$$$$$Error', error)
+  //       setError(
+  //         "submit",
+  //         "submitError",
+  //         `Oops! There seems to be an issue! ${error.message}`
+  //       );
+  //     }
+  //   };
 
   return (
     <div className={Styles.reg}>
@@ -93,6 +120,9 @@ export default function Register() {
           </div>
 
           <input type="submit" />
+          <div className={Styles.errorcon}>
+            {nodeError && <p>{nodeError}</p>}
+          </div>
         </form>
       </div>
     </div>
