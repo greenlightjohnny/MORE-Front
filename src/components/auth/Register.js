@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -6,8 +6,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import UserContext from "../../context/UserContext";
 import Joi from "joi";
 import axios from "axios";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Button from "../util/Button";
 
 const schema = Joi.object({
   name: Joi.string(),
@@ -19,15 +18,23 @@ const schema = Joi.object({
 });
 
 export default function Register() {
-  const { register, handleSubmit, setError, watch, errors } = useForm({
+  const { register, handleSubmit, setError, errors } = useForm({
     resolver: joiResolver(schema),
   });
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
+  useEffect(() => {
+    if (isButtonLoading) {
+      setTimeout(() => {
+        setIsButtonLoading(false);
+      }, 1000);
+    }
+  }, [isButtonLoading]);
 
   const APIReg = "http://localhost:5000/api/v1/users/register";
-  const APILogin = "http://localhost:5000/api/v1/users/login";
 
   const onSubmit = async (data) => {
     try {
@@ -128,6 +135,9 @@ export default function Register() {
           </div>
 
           <input type="submit" />
+          <Button type="submit" isLoading={isButtonLoading}>
+            Submit
+          </Button>
           <div className={Styles.errorcon}>
             {nodeError && <p>{nodeError}</p>}
           </div>

@@ -16,7 +16,7 @@ const schema = Joi.object({
 });
 
 export default function Login(props) {
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, errors } = useForm({
     resolver: joiResolver(schema),
   });
   const { setUserData } = useContext(UserContext);
@@ -39,10 +39,12 @@ export default function Login(props) {
     }
   }, [isButtonLoading]);
 
-  // Handle login
-  const onSubmit = async (data) => {
-    setIsButtonLoading(true);
-    clearNode();
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  //fetch data
+  async function fetchData(data) {
     try {
       const loginRes = await axios.post(APILogin, data, {
         withCredentials: true,
@@ -54,10 +56,32 @@ export default function Login(props) {
       localStorage.setItem("a-token", loginRes.data.token);
       history.push("/");
     } catch (err) {
-      setTimeout(() => {
-        err.response.data.msg && setNodeError(err.response.data.msg);
-      }, 1000);
+      err.response.data.msg && setNodeError(err.response.data.msg);
     }
+  }
+
+  // Handle login
+  const onSubmit = async (data) => {
+    setIsButtonLoading(true);
+
+    clearNode();
+    await delay(1000);
+    await fetchData(data);
+    // try {
+    //   const loginRes = await axios.post(APILogin, data, {
+    //     withCredentials: true,
+    //   });
+    //   setUserData({
+    //     token: loginRes.data.token,
+    //     user: loginRes.data.user,
+    //   });
+    //   localStorage.setItem("a-token", loginRes.data.token);
+    //   history.push("/");
+    // } catch (err) {
+    //   setTimeout(() => {
+    //     err.response.data.msg && setNodeError(err.response.data.msg);
+    //   }, 1000);
+    // }
   };
   const welcome = props.location.welcome;
 
