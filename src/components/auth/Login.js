@@ -3,7 +3,7 @@ import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 import Joi from "joi";
 import axios from "axios";
 import Button from "../util/Button";
@@ -19,11 +19,12 @@ export default function Login(props) {
   const { register, handleSubmit, errors } = useForm({
     resolver: joiResolver(schema),
   });
-  const { setUserData } = useContext(UserContext);
+  const authcontext = useContext(AuthContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const APILogin = "http://localhost:5000/api/v1/users/login";
+  const [user, setUser] = useState({ username: "", password: "" });
 
   //clear nodeError
   const clearNode = () => {
@@ -49,10 +50,11 @@ export default function Login(props) {
       const loginRes = await axios.post(APILogin, data, {
         withCredentials: true,
       });
-      setUserData({
+      setUser({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
+      authcontext.setIsAuthenticated(true);
       localStorage.setItem("a-token", loginRes.data.token);
       history.push("/");
     } catch (err) {

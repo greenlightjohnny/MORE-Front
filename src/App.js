@@ -9,20 +9,20 @@ import Header from "./components/layout/Header";
 import UserContext from "./context/UserContext";
 import Confirm from "./components/auth/Confirm";
 import Secret from "./components/pages/Secrets";
+import Private from "./hocs/Private";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/register" component={Register}></Route>
-            <Route path="/register" component={Register}></Route>
-            <Route path="/confirm/:etoken" component={Confirm}></Route>
-          </Switch>
-        </UserContext.Provider>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/register" component={Register}></Route>
+          <Route path="/register" component={Register}></Route>
+          <Private path="/secrets" component={Secret}></Private>
+          <Route path="/confirm/:etoken" component={Confirm}></Route>
+        </Switch>
       </BrowserRouter>
     </>
   );

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { joiResolver } from "@hookform/resolvers/joi";
 import UserContext from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 import Joi from "joi";
 import axios from "axios";
 import Button from "../util/Button";
@@ -21,7 +22,8 @@ export default function Register() {
   const { register, handleSubmit, setError, errors } = useForm({
     resolver: joiResolver(schema),
   });
-  const { setUserData } = useContext(UserContext);
+  //const { setUserData } = useContext(UserContext);
+  const authContext = useContext(AuthContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import AuthService from "../components/auth/AuthOptions";
+import axios from "axios";
 
 //provides provider and consumer for global state
 export const AuthContext = createContext();
@@ -9,31 +10,22 @@ export default ({ children }) => {
     token: undefined,
     user: undefined,
   });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      let token = localStorage.getItem("a-token");
-      if (token === null) {
-        localStorage.setItem("a-token", "");
-        token = "";
+      const userRes = await axios.get("http://localhost:5000/api/v1/users");
+      if (userRes) {
+        console.log(userRes.data);
       }
-      console.log(token);
-      const tokenRes = await axios.post(
-        "http://localhost:5000/api/v1/users/isvalid",
-        null,
 
-        { headers: { daisy: token } }
-      );
-      if (tokenRes.data) {
-        const userRes = await axios.get("http://localhost:5000/api/v1/users", {
-          headers: { daisy: token },
-        });
-
-        setUserData({
-          token,
-          user: userRes.data,
-        });
-      }
+      //     setUserData({
+      //       token,
+      //       user: userRes.data,
+      //     });
+      //     setIsAuthenticated()
+      //   }
     };
     checkLoggedIn();
   }, []);

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
-
+//import UserContext from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 const AuthOptions = () => {
-  const { userData, setUserData } = useContext(UserContext);
+  const authContext = useContext(AuthContext);
   const history = useHistory();
   const register = () => {
     history.push("/register");
@@ -12,15 +12,16 @@ const AuthOptions = () => {
     history.push("/login");
   };
   const logout = () => {
-    setUserData({
+    authContext.setUser({
       token: undefined,
       user: undefined,
     });
+    authContext.setIsAuthenticated(false);
     localStorage.setItem("a-token", "");
   };
   return (
     <div>
-      {userData.user ? (
+      {authContext.isAuthenticated ? (
         <button onClick={logout}>Log Out</button>
       ) : (
         <>

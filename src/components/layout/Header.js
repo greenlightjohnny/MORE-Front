@@ -9,6 +9,9 @@ const Header = () => {
         <Link to="/">
           <h1>Logo</h1>
         </Link>
+        <Link to="/secrets">
+          <h1>Secret</h1>
+        </Link>
         <AuthOptions />
       </nav>
     </header>
