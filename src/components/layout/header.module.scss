@@ -13,13 +13,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .container:first-child {
-    margin-left: 2vw;
-  }
-  .container:last-child {
-    margin-right: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
   }
 
   ul {

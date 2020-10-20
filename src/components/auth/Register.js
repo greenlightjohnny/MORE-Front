@@ -6,6 +6,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import UserContext from "../../context/UserContext";
 import Joi from "joi";
 import axios from "axios";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const schema = Joi.object({
   name: Joi.string(),

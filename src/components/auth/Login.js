@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Joi from "joi";
 import axios from "axios";
+import Button from "../util/Button";
 
 const schema = Joi.object({
   email: Joi.string()
@@ -21,6 +22,7 @@ export default function Login(props) {
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
   const APILogin = "http://localhost:5000/api/v1/users/login";
 
   //clear nodeError
@@ -28,8 +30,18 @@ export default function Login(props) {
     setNodeError("");
   };
 
+  // Button loader
+  useEffect(() => {
+    if (isButtonLoading) {
+      setTimeout(() => {
+        setIsButtonLoading(false);
+      }, 1000);
+    }
+  }, [isButtonLoading]);
+
   // Handle login
   const onSubmit = async (data) => {
+    setIsButtonLoading(true);
     clearNode();
     try {
       const loginRes = await axios.post(APILogin, data, {
@@ -42,7 +54,9 @@ export default function Login(props) {
       localStorage.setItem("a-token", loginRes.data.token);
       history.push("/");
     } catch (err) {
-      err.response.data.msg && setNodeError(err.response.data.msg);
+      setTimeout(() => {
+        err.response.data.msg && setNodeError(err.response.data.msg);
+      }, 1000);
     }
   };
   const welcome = props.location.welcome;
@@ -68,7 +82,10 @@ export default function Login(props) {
             {errors.password && <p>{errors.password.message}</p>}
           </div>
 
-          <input type="submit" />
+          {/* <input type="submit" /> */}
+          <Button type="submit" isLoading={isButtonLoading}>
+            Submit
+          </Button>
           <div className={Styles.errorcon}>
             {nodeError && <p>{nodeError}</p>}
           </div>
