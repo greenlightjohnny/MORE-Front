@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Confirm = () => {
   const { etoken } = useParams();
