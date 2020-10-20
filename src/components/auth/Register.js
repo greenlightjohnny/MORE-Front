@@ -36,7 +36,12 @@ export default function Register() {
 
   const APIReg = "http://localhost:5000/api/v1/users/register";
 
-  const onSubmit = async (data) => {
+  ///delay function
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function fetchData(data) {
     try {
       await axios.post(APIReg, data);
       //   const loginRes = await axios.post(APILogin, {
@@ -58,6 +63,36 @@ export default function Register() {
       console.log(err);
       err.response.data.msg && setNodeError(err.response.data.msg);
     }
+  }
+
+  const onSubmit = async (data) => {
+    setIsButtonLoading(true);
+    await delay(1000);
+    await fetchData(data);
+    // try {
+    //   await axios.post(APIReg, data);
+    //     const loginRes = await axios.post(APILogin, {
+    //       email: data.email,
+    //       password: data.password,
+    //     });
+    //     setUserData({
+    //       token: loginRes.data.token,
+    //       user: loginRes.data.user,
+    //     });
+    //     localStorage.setItem("a-token", loginRes.data.token);
+
+    //   history.push({
+    //     pathname: "/login",
+    //     welcome:
+    //       "Thanks for registering! Please check your email to complete registration",
+    //   });
+    // } catch (err) {
+    //   setTimeout(() => {
+
+    //   }, 1000)
+    //   console.log(err);
+    //   err.response.data.msg && setNodeError(err.response.data.msg);
+    // }
   };
 
   //   const onSubmit = async (data) => {
@@ -134,7 +169,7 @@ export default function Register() {
             {errors.confirmpassword && <p>Passwords do not match</p>}
           </div>
 
-          <input type="submit" />
+          {/* <input type="submit" /> */}
           <Button type="submit" isLoading={isButtonLoading}>
             Submit
           </Button>
