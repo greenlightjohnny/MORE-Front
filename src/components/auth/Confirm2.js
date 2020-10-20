@@ -10,8 +10,10 @@ const Confirm2 = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [data, setData] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const { etoken } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     let ignore = false;
@@ -26,14 +28,18 @@ const Confirm2 = () => {
         return Promise.all([loginRes, timer]).then(([response]) => {
           console.log(response);
           setData(response.data);
+          console.log("ayyyy");
           setLoading(false);
+          setRedirect(true);
         });
       } catch (err) {
-        console.log(err.response);
-        setError(err.response.data.msg);
-        console.log(err.response.data.msg);
+        const timer = new Promise((resolve) => setTimeout(resolve, 2000));
+        return Promise.all([err, timer]).then(([response]) => {
+          console.log(err.response);
+          setError(err.response.data.msg);
+          setLoading(false);
+        });
       }
-      setLoading(false);
     };
 
     checkPlease();
@@ -41,6 +47,20 @@ const Confirm2 = () => {
       ignore = true;
     };
   }, []);
+
+  //// If valid, redirect to login page after xx time
+  // Thanks Carlos! https://stackoverflow.com/questions/58325897/use-react-hook-with-redirect-and-settimeout
+  useEffect(() => {
+    if (redirect) {
+      let timei = setTimeout(() => {
+        history.push({
+          pathname: "/login",
+          welcome: "Thanks for registering! Please login below",
+        });
+      }, 2000);
+      return () => clearTimeout(timei);
+    }
+  }, [redirect]);
 
   return (
     <div className={Styles.center}>
