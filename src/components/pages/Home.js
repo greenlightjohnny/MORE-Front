@@ -6,6 +6,17 @@ import Icon2 from "../../images/icon2.png";
 import Icon3 from "../../images/icon3.png";
 import Icon4 from "../../images/icon4.png";
 import Icon5 from "../../images/icon5.png";
+import Icon6 from "../../images/icon6.png";
+import Icon7 from "../../images/icon7.png";
+import Icon8 from "../../images/icon8.png";
+import Icon9 from "../../images/icon9.png";
+import Icon11 from "../../images/icon11.png";
+import Icon12 from "../../images/icon12.png";
+import Icon13 from "../../images/icon13.png";
+import Icon14 from "../../images/icon14.png";
+import Icon15 from "../../images/icon15.png";
+import Icon16 from "../../images/icon16.png";
+import Icon10 from "../../images/icon10.png";
 
 const Home = () => {
   return (
@@ -41,6 +52,39 @@ const Home = () => {
                 </div>
                 <div className={Styles.iconcon}>
                   <img src={Icon5} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon15} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon16} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon6} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon7} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon8} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon9} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon10} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon11} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon12} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon13} alt="test" />
+                </div>
+                <div className={Styles.iconcon}>
+                  <img src={Icon14} alt="test" />
                 </div>
               </div>
             </div>
