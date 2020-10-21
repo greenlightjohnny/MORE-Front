@@ -16,3 +16,34 @@
     z-index: 2;
   }
 }
+
+.flow {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 1) 95%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  margin-top: -20rem;
+  z-index: 4;
+  position: relative;
+
+  .con {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+  }
+
+  .imgcon {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
