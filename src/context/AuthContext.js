@@ -15,9 +15,12 @@ export default ({ children }) => {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      const userRes = await axios.get("http://localhost:5000/api/v1/users");
-      if (userRes) {
-        console.log(userRes.data);
+      const userRes = await axios.get(
+        "http://localhost:5000/api/v1/users/auth",
+        { withCredentials: true }
+      );
+      if (userRes.data) {
+        setIsAuthenticated(true);
       }
 
       //     setUserData({

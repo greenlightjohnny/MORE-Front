@@ -9,7 +9,7 @@ import Header from "./components/layout/Header";
 import UserContext from "./context/UserContext";
 import Confirm from "./components/auth/Confirm";
 import Secret from "./components/pages/Secrets";
-import Private from "./hocs/Private";
+import Private from "./hocs/Private2";
 function App() {
   return (
     <>
