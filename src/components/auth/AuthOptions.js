@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 //import UserContext from "../../context/UserContext";
 import { AuthContext } from "../../context/AuthContext";
 const AuthOptions = (props) => {
@@ -29,9 +30,13 @@ const AuthOptions = (props) => {
   return (
     <div>
       {authContext.isAuthenticated ? (
-        <button onClick={logout}>Log Out</button>
+        <>
+          <Link to="/secrets">Secret</Link>
+          <button onClick={logout}>Log Out</button>{" "}
+        </>
       ) : (
         <>
+          <Link to="/secrets">Secret</Link>
           <button onClick={register}>Register</button>
           <button onClick={login}>Login</button>{" "}
         </>

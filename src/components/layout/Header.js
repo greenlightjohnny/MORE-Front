@@ -2,16 +2,17 @@ import React from "react";
 import Styles from "./header.module.scss";
 import AuthOptions from "../auth/AuthOptions";
 import { Link } from "react-router-dom";
+import Logo from "../../images/logo3.png";
 const Header = () => {
   return (
     <header className={Styles.main}>
       <nav className={Styles.container}>
         <Link to="/">
-          <h1>Logo</h1>
+          <div className={Styles.logocon}>
+            <img src={Logo} alt="Abstract logo" />
+          </div>
         </Link>
-        <Link to="/secrets">
-          <h1>Secret</h1>
-        </Link>
+
         <AuthOptions />
       </nav>
     </header>
