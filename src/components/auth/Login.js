@@ -24,7 +24,6 @@ export default function Login(props) {
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const APILogin = "http://localhost:5000/api/v1/users/login";
-  const [user, setUser] = useState({ username: "", password: "" });
 
   //clear nodeError
   const clearNode = () => {
@@ -50,12 +49,9 @@ export default function Login(props) {
       const loginRes = await axios.post(APILogin, data, {
         withCredentials: true,
       });
-      setUser({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
+
       authcontext.setIsAuthenticated(true);
-      localStorage.setItem("a-token", loginRes.data.token);
+
       history.push("/");
     } catch (err) {
       err.response.data.msg && setNodeError(err.response.data.msg);

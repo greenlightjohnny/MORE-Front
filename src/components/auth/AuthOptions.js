@@ -23,7 +23,7 @@ const AuthOptions = (props) => {
     );
     console.log(loginRes);
     history.push("/");
-    //authContext.setIsAuthenticated(false);
+    authContext.setIsAuthenticated(false);
   };
 
   return (

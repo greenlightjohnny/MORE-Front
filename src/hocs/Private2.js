@@ -17,7 +17,7 @@ const Private2 = ({ component: Component, ...rest }) => {
         setAuthentication(true);
       } catch (e) {
         // Something failed
-        console.log(e.data);
+        console.log(e.response.data);
       }
       setLoadingComplete(true);
     };
@@ -34,6 +34,7 @@ const Private2 = ({ component: Component, ...rest }) => {
               <Redirect
                 to={{
                   pathname: "/login",
+                  welcome: "Not logged in",
                   state: { from: props.location },
                 }}
               />

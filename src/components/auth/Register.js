@@ -3,7 +3,7 @@ import Styles from "./register.module.scss";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { joiResolver } from "@hookform/resolvers/joi";
-import UserContext from "../../context/UserContext";
+
 import { AuthContext } from "../../context/AuthContext";
 import Joi from "joi";
 import axios from "axios";

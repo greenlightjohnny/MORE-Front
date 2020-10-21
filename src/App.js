@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import axios from "axios";
+
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Header from "./components/layout/Header";
-import UserContext from "./context/UserContext";
+
 import Confirm from "./components/auth/Confirm";
 import Secret from "./components/pages/Secrets";
 import Private from "./hocs/Private2";
