@@ -9,11 +9,72 @@
     left: 0;
     height: 100%;
     width: 100%;
+    //filter: brightness(50%);
     background-image: url(/img/m9.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     z-index: 2;
+  }
+
+  .herocon:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .heroFlex {
+    position: relative;
+    margin-top: 5rem;
+    max-width: 1200px;
+    margin: 5rem auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 2vw;
+    z-index: 3;
+
+    .info {
+      color: #fff;
+      max-width: 500px;
+      h1 {
+        margin-bottom: 1rem;
+      }
+      p {
+        line-height: 1.4rem;
+      }
+    }
+  }
+
+  .heroFlex > div {
+    max-width: 600px;
+    flex: 1;
+    h3 {
+      color: #fff;
+      font-size: 1.9rem;
+    }
+  }
+
+  .logoflex {
+    display: flex;
+    flex-direction: row;
+
+    flex-wrap: wrap;
+    min-width: 0;
+
+    .iconcon {
+      min-width: 0;
+      min-height: 0;
+      margin: 0.3rem;
+
+      img {
+        max-height: 60px;
+        min-width: 0;
+      }
+    }
   }
 }
 
