@@ -28,40 +28,69 @@
 
   .heroFlex {
     position: relative;
-    margin-top: 5rem;
+
     max-width: 1200px;
-    margin: 5rem auto 0 auto;
+    margin: 15vh auto 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 2vw;
     z-index: 3;
 
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+    }
+
     .info {
       color: #fff;
       max-width: 500px;
       h1 {
         margin-bottom: 1rem;
+        font-size: 3rem;
+        span {
+          position: relative;
+        }
+
+        span:after {
+          border-bottom: 0.6rem solid #ec5990;
+          content: "";
+          left: 0;
+          margin-top: calc(0.125em / 2 * -1);
+          position: absolute;
+          right: 0;
+          top: 50%;
+        }
       }
       p {
-        line-height: 1.4rem;
+        line-height: 1.9rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    .tech {
+      @media only screen and (max-width: 800px) {
+        margin-top: 15rem;
       }
     }
   }
 
   .heroFlex > div {
     max-width: 600px;
+    margin: 0 auto;
     flex: 1;
+
     h3 {
       color: #fff;
       font-size: 1.9rem;
+      margin-bottom: 1rem;
+      text-align: center;
     }
   }
 
   .logoflex {
     display: flex;
     flex-direction: row;
-
+    justify-content: space-between;
     flex-wrap: wrap;
     min-width: 0;
 
@@ -92,14 +121,35 @@
   z-index: 4;
   position: relative;
 
+  @media only screen and (max-width: 800px) {
+    margin-top: 0rem;
+    padding-top: 6rem;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 30%,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 1) 95%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
   .con {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .imgcon {
-    max-width: 700px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .sendit {
+    max-width: 400px;
     margin: 0 auto;
   }
 
