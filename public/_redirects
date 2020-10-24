@@ -1,1 +1,2 @@
 /api/*  https://shiny-mern.herokuapp.com/api/:splat 200
+/confirm/*  https://shiny-mern.herokuapp.com/api/v1/users/confirm/:splat 200
