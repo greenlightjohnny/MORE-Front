@@ -9,7 +9,7 @@ const Private2 = ({ component: Component, ...rest }) => {
   // Login function
   useEffect(() => {
     const isLogin = async () => {
-      const checkAuth = "http://localhost:5000/api/v1/users/auth";
+      const checkAuth = "/api/v1/users/auth";
       try {
         const result = await Axios.get(checkAuth, { withCredentials: true });
 
