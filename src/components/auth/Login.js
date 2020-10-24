@@ -23,7 +23,7 @@ export default function Login(props) {
   const history = useHistory();
   const [nodeError, setNodeError] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
-  const APILogin = "http://localhost:5000/api/v1/users/login";
+  const APILogin = "/api/v1/users/login";
 
   //clear nodeError
   const clearNode = () => {

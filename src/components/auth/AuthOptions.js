@@ -16,7 +16,7 @@ const AuthOptions = (props) => {
   };
 
   const logout = async () => {
-    const confirmURL = "http://localhost:5000/api/v1/users/logout";
+    const confirmURL = "/api/v1/users/logout";
     const loginRes = await axios.post(
       confirmURL,
       {},

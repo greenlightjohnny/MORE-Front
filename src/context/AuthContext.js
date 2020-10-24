@@ -13,10 +13,9 @@ export default ({ children }) => {
     console.log("context check peopleee");
     const checkLoggedIn = async () => {
       try {
-        const userRes = await axios.get(
-          "http://localhost:5000/api/v1/users/auth",
-          { withCredentials: true }
-        );
+        const userRes = await axios.get("/api/v1/users/auth", {
+          withCredentials: true,
+        });
         setIsAuthenticated(true);
       } catch (err) {
         console.log(err.response);

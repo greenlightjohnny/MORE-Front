@@ -36,7 +36,7 @@ export default function Register() {
     }
   }, [isButtonLoading]);
 
-  const APIReg = "http://localhost:5000/api/v1/users/register";
+  const APIReg = "/api/v1/users/register";
 
   ///delay function
   function delay(ms) {

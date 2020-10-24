@@ -22,7 +22,7 @@ const Confirm = () => {
         setLoading(true);
         setError({});
         const timer = new Promise((resolve) => setTimeout(resolve, 2000));
-        const confirmURL = "http://localhost:5000/api/v1/users/confirm";
+        const confirmURL = "/api/v1/users/confirm";
         const loginRes = await axios.get(`${confirmURL}/${etoken}`);
         // if(!ignore) setData(confirmURL.data)
         return Promise.all([loginRes, timer]).then(([response]) => {
