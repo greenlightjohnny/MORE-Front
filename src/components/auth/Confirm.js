@@ -16,6 +16,7 @@ const Confirm = () => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("Con.js", etoken);
     let ignore = false;
     const checkPlease = async () => {
       try {
