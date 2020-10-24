@@ -1,1 +1,1 @@
-/user/*  https://shiny-mern.herokuapp.com:splat 200
+/api/*  https://shiny-mern.herokuapp.com/api/:splat 200
