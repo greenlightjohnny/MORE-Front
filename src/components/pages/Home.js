@@ -23,81 +23,99 @@ const Home = () => {
   return (
     <>
       <section className={Styles.hero}>
-        <div className={Styles.heroCon}>
-          <div className={Styles.heroFlex}>
-            <div className={Styles.info}>
-              <h1>
-                <span className={Styles.hi}>MERN</span> For Fun and{" "}
-                <span className={Styles.line}>Profit</span>
-              </h1>
-              <p>
-                Three servers (Netlify, Heroku, Atlas) <br></br>
-                Registration with client AND server side validation <br></br>
-                Email confirmations with unique JWT URL's <br></br>
-                Bcrypt salting and hashing <br></br>
-                REST API JWT authorization/authentication<br></br>
-              </p>
-            </div>
-            <div className={Styles.tech}>
-              <h3>Built With:</h3>
-              <div className={Styles.logoflex}>
-                <div className={Styles.iconcon}>
-                  <img src={Icon15} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon2} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon3} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon4} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon5} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon17} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon16} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon1} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon7} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon8} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon9} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon10} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon11} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon6} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon13} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon14} alt="test" />
-                </div>
-                <div className={Styles.iconcon}>
-                  <img src={Icon12} alt="test" />
-                </div>
+        <div className={Styles.heroFlex}>
+          <div className={Styles.info}>
+            <h1>
+              <span className={Styles.hi}>MERN</span> For Fun and{" "}
+              <span className={Styles.line}>Profit</span>
+            </h1>
+            <p>
+              Three servers (Netlify, Heroku, Atlas) <br></br>
+              Registration with client AND server side validation <br></br>
+              Email confirmations with unique JWT URL's <br></br>
+              Bcrypt salting and hashing <br></br>
+              REST API JWT authorization/authentication<br></br>
+            </p>
+          </div>
+          <div className={Styles.tech}>
+            <h3>Built With:</h3>
+            <div className={Styles.logoflex}>
+              <div className={Styles.iconcon}>
+                <img src={Icon15} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon2} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon3} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon4} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon5} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon17} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon16} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon1} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon7} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon8} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon9} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon10} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon11} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon6} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon13} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon14} alt="test" />
+              </div>
+              <div className={Styles.iconcon}>
+                <img src={Icon12} alt="test" />
               </div>
             </div>
           </div>
         </div>
+        <div className={Styles.con}>
+          <div className={Styles.imgcon}>
+            <img src={Flow} alt="Diagram of servers" />
+          </div>
+          <div className={Styles.sendit}>
+            <h3>About</h3>
+            <p>
+              Lots going on here! This has a React SPA front end (hosted on
+              Netlify) and a Node server (Heroku) along with a MongoDB database
+              server (Atlas) on the back end. <br></br>
+              The Node server is using Express and Mongoose for routing and
+              database work, along with Joi for input validation and Bcrypt for
+              salting and hashing. Authentication and authorization is handled
+              using JWTs, which are stored client side only, making it a REST
+              API. The Node server is also responsible for sending out
+              registration conformation emails with a separate unique JWT.
+              <br></br>
+            </p>
+          </div>
+        </div>
       </section>
-      <section className={Styles.flow}>
+      {/* <section className={Styles.flow}>
         <div className={Styles.con}>
           <div className={Styles.imgcon}>
             <img src={Flow} alt="Diagram of servers" />
@@ -106,7 +124,7 @@ const Home = () => {
             <img src={Flow} alt="Diagram of servers" />
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
