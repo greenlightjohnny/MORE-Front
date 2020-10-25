@@ -27,7 +27,8 @@ const Home = () => {
           <div className={Styles.heroFlex}>
             <div className={Styles.info}>
               <h1>
-                MERN For Fun and <span>Profit</span>
+                <span className={Styles.hi}>MERN</span> For Fun and{" "}
+                <span className={Styles.line}>Profit</span>
               </h1>
               <p>
                 Three servers (Netlify, Heroku, Atlas) <br></br>
@@ -38,7 +39,7 @@ const Home = () => {
               </p>
             </div>
             <div className={Styles.tech}>
-              <h3>The tech:</h3>
+              <h3>Built With:</h3>
               <div className={Styles.logoflex}>
                 <div className={Styles.iconcon}>
                   <img src={Icon15} alt="test" />

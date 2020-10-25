@@ -64,24 +64,26 @@ const Confirm = () => {
   }, [redirect]);
 
   return (
-    <div className={Styles.center}>
-      {loading ? (
-        <>
-          <h1>Confirming email...</h1>
-          <div className={Styles.spinnercon}>
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={100}
-              width={100}
-              margin="0 auto"
-              timeout={3000} //3 secs
-            />
-          </div>
-        </>
-      ) : (
-        <h1>{data ? data : error}</h1>
-      )}
+    <div className={Styles.con}>
+      <div className={Styles.center}>
+        {loading ? (
+          <>
+            <h1>Confirming email...</h1>
+            <div className={Styles.spinnercon}>
+              <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={200}
+                width={200}
+                margin="0 auto"
+                timeout={3000} //3 secs
+              />
+            </div>
+          </>
+        ) : (
+          <h1>{data ? data : error}</h1>
+        )}
+      </div>
     </div>
   );
 };

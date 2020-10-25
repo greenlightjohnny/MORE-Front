@@ -88,7 +88,7 @@ export default function Login(props) {
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Login</h1>
-          {welcome && <p>{welcome}</p>}
+          <div className={Styles.errorcon}>{welcome && <p>{welcome}</p>}</div>
           <input
             name="email"
             placeholder="Email"
@@ -99,7 +99,7 @@ export default function Login(props) {
             {errors.email && <p>{errors.email.message}</p>}
           </div>
 
-          <input name="password" placeholder="password" ref={register} />
+          <input name="password" placeholder="Password" ref={register} />
           <div className={Styles.errorcon}>
             {errors.password && <p>{errors.password.message}</p>}
           </div>

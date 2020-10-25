@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect, useSelector } from "react";
 import { Route, Redirect } from "react-router-dom";
+import Styles from "../components/pages/secrets.module.scss";
 
 const Private2 = ({ component: Component, ...rest }) => {
   // State
@@ -46,7 +47,7 @@ const Private2 = ({ component: Component, ...rest }) => {
       />
     );
   } else {
-    return <div> Loading... </div>;
+    return <div className={Styles.con}> </div>;
   }
 };
 

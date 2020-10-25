@@ -146,6 +146,7 @@ export default function Register() {
       <div className={Styles.regcon}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Register</h1>
+          <div className={Styles.errorcon}></div>
           <input
             name="email"
             placeholder="Email"
@@ -161,12 +162,16 @@ export default function Register() {
             {errors.name && <p>{errors.name.message}</p>}
           </div>
 
-          <input name="password" placeholder="password" ref={register} />
+          <input name="password" placeholder="Password" ref={register} />
           <div className={Styles.errorcon}>
             {errors.password && <p>{errors.password.message}</p>}
           </div>
 
-          <input name="confirmpassword" placeholder="password" ref={register} />
+          <input
+            name="confirmpassword"
+            placeholder="Confirm Password"
+            ref={register}
+          />
           <div className={Styles.errorcon}>
             {errors.confirmpassword && <p>Passwords do not match</p>}
           </div>

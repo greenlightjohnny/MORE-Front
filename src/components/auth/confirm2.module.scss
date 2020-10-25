@@ -1,15 +1,19 @@
-.center {
-  margin: 10rem auto 0 auto;
-  max-width: 800px;
-  padding: 2vw;
+.con {
+  background: #191d3a;
+  min-height: 100vh;
 
-  .spinnercon {
-    max-width: 200px;
-    margin: 0 auto;
-  }
-  h1 {
-    font-size: 1.4rem;
-    color: #ec5990;
-    text-align: center;
+  .center {
+    margin: 10rem auto 0 auto;
+    max-width: 800px;
+    padding: 2vw;
+
+    .spinnercon {
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.4rem;
+      color: #ec5990;
+      text-align: center;
+    }
   }
 }

@@ -29,8 +29,8 @@
     font-weight: 100;
     color: white;
     text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(79, 98, 148);
+    padding-bottom: 0px;
+    //border-bottom: 1px solid rgb(79, 98, 148);
   }
   input {
     display: block;
@@ -39,6 +39,12 @@
     border-radius: 4px;
     padding: 6px 10px;
     border: 1px solid #fff;
+
+    &:focus,
+    &:active {
+      outline: none;
+      //border: 2px solid #bf1650;
+    }
   }
 
   button {
@@ -82,6 +88,7 @@
 
   p {
     color: #2199df;
+    padding-top: 5px;
   }
 
   .errorcon {
